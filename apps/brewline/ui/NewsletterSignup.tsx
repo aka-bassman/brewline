@@ -1,5 +1,6 @@
 "use client";
 
+import { st } from "@apps/brewline/client";
 import { cn, usePage } from "akanjs/client";
 import { isEmail } from "akanjs/common";
 import { Input } from "akanjs/ui";
@@ -15,8 +16,18 @@ export const NewsletterSignup = ({ className }: NewsletterSignupProps) => {
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"idle" | "error" | "done">("idle");
 
-  const submit = () => {
-    setState(isEmail(email.trim()) ? "done" : "error");
+  const submit = async () => {
+    const value = email.trim();
+    if (!isEmail(value)) {
+      setState("error");
+      return;
+    }
+    try {
+      await st.do.createSubscriber({ email: value });
+      setState("done");
+    } catch {
+      setState("error");
+    }
   };
 
   return (
@@ -43,7 +54,7 @@ export const NewsletterSignup = ({ className }: NewsletterSignupProps) => {
           onPressEnter={submit}
         />
         <button className={jellyButtonRecipe({ variant: "primary", size: "md" })} type="submit">
-          {l.trans({ en: "Notify me", ko: "알림 받기" })}
+          {l.trans({ en: "Subscribe", ko: "구독하기" })}
         </button>
       </form>
       {state === "error" ? (
