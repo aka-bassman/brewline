@@ -1,8 +1,7 @@
 import { dayjs } from "akanjs/base";
 import { by, from, into } from "akanjs/document";
-
-import { Err } from "../dict";
 import * as cnst from "../cnst";
+import { Err } from "../dict";
 
 // ===== task.document.ts =====
 // Convention: <module>.document.ts — the database query and persistence layer.
