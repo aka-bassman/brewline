@@ -64,6 +64,29 @@ export default page().render(() => {
       }),
     },
   ];
+  const faqs = [
+    {
+      q: l.trans({ en: "When does my coffee ship?", ko: "커피는 언제 배송되나요?" }),
+      a: l.trans({
+        en: "Every other Monday, roasted the Friday before.",
+        ko: "격주 월요일마다 배송되며, 그 전주 금요일에 로스팅합니다.",
+      }),
+    },
+    {
+      q: l.trans({ en: "Can I pause?", ko: "일시 정지할 수 있나요?" }),
+      a: l.trans({
+        en: "Yes, skip any delivery up to 3 days before it ships.",
+        ko: "네, 배송 3일 전까지는 어떤 배송이든 건너뛸 수 있습니다.",
+      }),
+    },
+    {
+      q: l.trans({ en: "How do I cancel?", ko: "해지는 어떻게 하나요?" }),
+      a: l.trans({
+        en: "One click in your account, no phone call, no fee.",
+        ko: "계정에서 클릭 한 번으로 끝납니다. 전화도 수수료도 없습니다.",
+      }),
+    },
+  ];
   const steps = [
     {
       title: l.trans({ en: "Make this page yours", ko: "이 페이지를 바꿔 보세요" }),
@@ -276,6 +299,26 @@ export default page().render(() => {
               </li>
             ))}
           </ol>
+        </section>
+
+        <section className="py-12">
+          <p className="font-bold text-primary text-sm">{l.trans({ en: "FAQ", ko: "자주 묻는 질문" })}</p>
+          <h2 className="mt-2 font-black text-3xl sm:text-4xl">
+            {l.trans({ en: "Shipping, pausing, cancelling", ko: "배송, 일시 정지, 해지" })}
+          </h2>
+          <div className="jelly-glass mt-8 divide-y divide-foreground/8 rounded-box">
+            {faqs.map((faq, idx) => (
+              <details className="group p-5 sm:p-6" key={idx}>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold [&::-webkit-details-marker]:hidden">
+                  {faq.q}
+                  <span className="shrink-0 text-foreground/45 text-xl leading-none transition-transform group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 text-foreground/60 text-sm leading-6">{faq.a}</p>
+              </details>
+            ))}
+          </div>
         </section>
 
         <footer className="py-10 text-center text-foreground/45 text-sm">
