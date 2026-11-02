@@ -1,4 +1,4 @@
-import { jellyButtonRecipe } from "@apps/brewline/ui";
+import { jellyButtonRecipe, NewsletterSignup } from "@apps/brewline/ui";
 import { getEnv } from "akanjs/base";
 import { cn, page, usePage } from "akanjs/client";
 import { Image, Link, System } from "akanjs/ui";
@@ -261,8 +261,11 @@ export default page().render(() => {
           </ol>
         </section>
 
-        <footer className="py-10 text-center text-foreground/45 text-sm">
-          {l.trans({ en: "Made with Akan.js · Powered by Bun", ko: "Akan.js로 만들고 Bun으로 구동합니다" })}
+        <footer className="py-10 text-center">
+          <NewsletterSignup className="mb-8" />
+          <p className="text-foreground/45 text-sm">
+            {l.trans({ en: "Made with Akan.js · Powered by Bun", ko: "Akan.js로 만들고 Bun으로 구동합니다" })}
+          </p>
         </footer>
       </div>
     </main>
