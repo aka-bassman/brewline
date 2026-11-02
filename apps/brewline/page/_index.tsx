@@ -88,15 +88,6 @@ export default page().render(() => {
       code: "akan create-module <name>",
     },
     {
-      title: l.trans({ en: "Read the sample module", ko: "샘플 모듈을 읽어 보세요" }),
-      body: l.trans({
-        en: "The task module walks one feature end to end — the model, its guarded API, the store and the pages.",
-        ko: "task 모듈이 모델부터 가드가 걸린 API, 스토어, 페이지까지 기능 하나를 처음부터 끝까지 보여 줍니다.",
-      }),
-      code: "lib/task",
-      href: "/task",
-    },
-    {
       title: l.trans({ en: "Connect an agent", ko: "에이전트를 연결해 보세요" }),
       body: l.trans({
         en: "Every guarded endpoint is already published as an MCP tool.",
@@ -197,9 +188,6 @@ export default page().render(() => {
                 target="_blank"
               >
                 {l.trans({ en: "Read Quick Start", ko: "빠른 시작 읽기" })}
-              </Link>
-              <Link className={jellyButtonRecipe({ variant: "default", size: "lg" })} href="/task">
-                {l.trans({ en: "Open the Sample", ko: "샘플 열어 보기" })}
               </Link>
             </div>
           </div>
