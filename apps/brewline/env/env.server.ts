@@ -1,4 +1,3 @@
-
 import { env as debug } from "./env.server.debug";
 import { env as develop } from "./env.server.develop";
 import { env as local } from "./env.server.local";
@@ -10,4 +9,3 @@ const currentEnv = process.env.AKAN_PUBLIC_ENV ?? "local";
 if (!(currentEnv in envConfigs)) throw new Error(`Unknown environment: ${currentEnv}`);
 
 export const env = envConfigs[currentEnv as keyof typeof envConfigs];
-  
