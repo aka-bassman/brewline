@@ -13,7 +13,6 @@ export class NotiService extends serve("noti" as const, () => ({})) {}
 // export class NotiService extends serve("noti" as const, ({ plug, env, service }) => ({
 //   pushApi: plug(PushApi),
 //   fcmKey: env((options) => options.fcmKey),
-//   taskService: service<srv.TaskService>(),
 // })) {
 //   async sendPush(userId: string, title: string, body: string) {
 //     const token = await this.getDeviceToken(userId);
