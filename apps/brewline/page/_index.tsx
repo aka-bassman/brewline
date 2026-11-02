@@ -1,4 +1,4 @@
-import { jellyButtonRecipe } from "@apps/brewline/ui";
+import { GiftBanner, jellyButtonRecipe } from "@apps/brewline/ui";
 import { getEnv } from "akanjs/base";
 import { cn, page, usePage } from "akanjs/client";
 import { Image, Link, System } from "akanjs/ui";
@@ -21,6 +21,8 @@ const numeralTiles = [
 export default page().render(() => {
   const appName = getEnv().appName;
   const { l } = usePage();
+  const now = new Date();
+  const showGiftBanner = now < new Date(now.getFullYear(), 11, 25);
   const friends = [
     { name: "planet", role: l.trans({ en: "Web", ko: "웹" }) },
     { name: "rocket", role: l.trans({ en: "App", ko: "앱" }) },
@@ -139,7 +141,22 @@ export default page().render(() => {
           </div>
         </nav>
 
-        <section className="grid min-h-[calc(100svh-5rem)] items-center gap-6 py-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10">
+        <section className="relative grid min-h-[calc(100svh-5rem)] items-center gap-6 py-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10">
+          {showGiftBanner ? (
+            <GiftBanner className="absolute inset-x-0 top-0 z-20" closeLabel={l.trans({ en: "Dismiss", ko: "닫기" })}>
+              <div className="jelly-glass flex items-center gap-3 rounded-box px-4 py-2 pr-10">
+                <p className="min-w-0 flex-1 font-bold text-sm sm:text-base">
+                  {l.trans({
+                    en: "Give 3 months of coffee — the gift that keeps brewing.",
+                    ko: "커피 3개월 선물 — 계속 우러나는 선물.",
+                  })}
+                </p>
+                <Link className={jellyButtonRecipe({ variant: "primary", size: "sm" }, "shrink-0")} href="/plans">
+                  {l.trans({ en: "Send a gift", ko: "선물 보내기" })}
+                </Link>
+              </div>
+            </GiftBanner>
+          ) : null}
           <div className="intro-rise group relative mx-auto aspect-square w-48 sm:w-64 lg:w-full lg:max-w-md">
             <div className="absolute inset-x-[16%] bottom-[3%] h-[7%] rounded-full bg-black/25 blur-xl dark:bg-black/60" />
             <div className="jelly-breathe group-hover:jelly-wobble size-full">
