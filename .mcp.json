@@ -3,10 +3,7 @@
     "akan": {
       "type": "stdio",
       "command": "bash",
-      "args": [
-        "-lc",
-        "cd \"$CLAUDE_PROJECT_DIR\" && akan mcp --mode apply"
-      ]
+      "args": ["-lc", "cd \"$CLAUDE_PROJECT_DIR\" && akan mcp --mode apply"]
     }
   }
 }
