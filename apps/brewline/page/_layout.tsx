@@ -1,7 +1,5 @@
-
 import "./styles.css";
 import { rootLayout } from "akanjs/client";
-
 
 export default rootLayout()
   .fonts([
@@ -32,10 +30,5 @@ export default rootLayout()
     </>,
   )
   .render(({ children }) => {
-    return (
-      <>
-        {children}
-      </>
-    );
+    return <>{children}</>;
   });
-  

@@ -1,4 +1,4 @@
-import { internal, endpoint } from "akanjs/signal";
+import { endpoint, internal } from "akanjs/signal";
 
 import * as srv from "../srv";
 

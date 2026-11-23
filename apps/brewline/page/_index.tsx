@@ -1,16 +1,6 @@
-
 import { jellyButtonRecipe } from "@apps/brewline/ui";
-import { getEnv } from "akanjs/base";
 import { cn, page, usePage } from "akanjs/client";
-import { Image, Link, System } from "akanjs/ui";
-
-const friendFloat = {
-  planet: "[--float-delay:-0.4s] [--float-duration:6.2s]",
-  rocket: "[--float-delay:-2.2s] [--float-duration:5.2s] [--float-tilt:7deg]",
-  moon: "[--float-delay:-3.6s] [--float-duration:7s] [--float-tilt:-5deg]",
-  cloud: "[--float-delay:-1.4s] [--float-duration:8s] [--float-rise:0.6rem]",
-  comet: "[--float-delay:-4.8s] [--float-duration:4.6s] [--float-tilt:9deg]",
-} as const;
+import { Link } from "akanjs/ui";
 
 const numeralTiles = [
   "tint-planet text-white",
@@ -20,15 +10,7 @@ const numeralTiles = [
 ] as const;
 
 export default page().render(() => {
-  const appName = getEnv().appName;
   const { l } = usePage();
-  const friends = [
-    { name: "planet", role: l.trans({ en: "Web", ko: "웹" }) },
-    { name: "rocket", role: l.trans({ en: "App", ko: "앱" }) },
-    { name: "moon", role: l.trans({ en: "Server · DB", ko: "서버 · DB" }) },
-    { name: "cloud", role: l.trans({ en: "Infra", ko: "인프라" }) },
-    { name: "comet", role: l.trans({ en: "Agent", ko: "에이전트" }) },
-  ] as const;
   const chapters = [
     {
       numeral: "1",
@@ -110,99 +92,17 @@ export default page().render(() => {
   return (
     <main className="relative min-h-screen overflow-x-clip break-keep text-foreground">
       <div className="mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-6 lg:px-8">
-        <nav className="flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <Image
-              alt={l.trans({ en: "Logo", ko: "로고" })}
-              className="jelly-breathe size-10"
-              height={80}
-              priority
-              src="/logo.png"
-              width={80}
-            />
-            <div className="leading-tight">
-              <p className="font-black text-lg tracking-tight">{appName}</p>
-              <p className="text-foreground/50 text-xs">
-                {l.trans({ en: "Built with Akan.js", ko: "Akan.js로 만든 앱" })}
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <System.ThemeToggle themes={["light", "dark"]} />
-            <System.SelectLanguage languages={["en", "ko"]} />
-            <Link
-              className={jellyButtonRecipe({ variant: "default", size: "sm" }, "max-sm:hidden")}
-              href="https://akanjs.com"
-              target="_blank"
-            >
-              {l.trans({ en: "Official Site", ko: "공식 사이트" })} ↗
-            </Link>
-          </div>
-        </nav>
-
-        <section className="grid min-h-[calc(100svh-5rem)] items-center gap-6 py-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-10">
-          <div className="intro-rise group relative mx-auto aspect-square w-48 sm:w-64 lg:w-full lg:max-w-md">
-            <div className="absolute inset-x-[16%] bottom-[3%] h-[7%] rounded-full bg-black/25 blur-xl dark:bg-black/60" />
-            <div className="jelly-breathe group-hover:jelly-wobble size-full">
-              <Image
-                alt=""
-                className="pointer-events-none size-full select-none object-contain"
-                draggable={false}
-                height={640}
-                priority
-                src="/jelly/star.webp"
-                width={640}
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <p className="intro-rise jelly-glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-bold text-foreground/75 text-sm [--intro-delay:40ms]">
-              <span className="size-2 rounded-full bg-success ring-4 ring-success/20" />
-              {l.trans({ en: "Your app is running", ko: "앱이 실행 중입니다" })}
-            </p>
-            <h1 className="intro-rise wrap-anywhere mt-6 max-w-full font-black text-[clamp(3.5rem,12vw,8.5rem)] leading-[0.85] tracking-[-0.06em] [--intro-delay:80ms]">
-              {appName}
+        <section className="flex min-h-[calc(100svh-5rem)] flex-col items-center justify-center py-12 text-center">
+          <div className="flex w-full max-w-2xl flex-col items-center">
+            <h1 className="max-w-full text-balance font-black text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
+              Fresh roast, at your door every two weeks
             </h1>
-            <p className="intro-rise mt-6 max-w-xl font-bold text-foreground/60 text-lg leading-8 [--intro-delay:160ms]">
-              {l.trans({
-                en: "Built on Akan.js — the TypeScript framework, agents included.",
-                ko: "에이전트까지 들어 있는 TypeScript 프레임워크, Akan.js로 만들었습니다.",
-              })}
+            <p className="mt-6 max-w-xl text-balance text-foreground/70 text-lg leading-8 sm:text-xl">
+              Small-batch beans from three roasters we trust. Pause or cancel anytime.
             </p>
-            <ul className="intro-rise mt-8 flex items-end gap-2 [--intro-delay:240ms] sm:gap-4">
-              {friends.map((friend) => (
-                <li className="group flex flex-col items-center gap-2" key={friend.name}>
-                  <span className={cn("jelly-float block", friendFloat[friend.name])}>
-                    <span className="group-hover:jelly-wobble block">
-                      <Image
-                        alt=""
-                        className="pointer-events-none size-14 select-none sm:size-18"
-                        draggable={false}
-                        height={200}
-                        src={`/jelly/${friend.name}.webp`}
-                        width={200}
-                      />
-                    </span>
-                  </span>
-                  <span className="whitespace-nowrap rounded-full bg-foreground/6 px-2.5 py-0.5 font-bold text-[11px] text-foreground/60">
-                    {friend.role}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="intro-rise mt-10 flex flex-wrap justify-center gap-3 [--intro-delay:320ms] lg:justify-start">
-              <Link
-                className={jellyButtonRecipe({ size: "lg" })}
-                href="https://akanjs.com/docs/intro/quickstart"
-                target="_blank"
-              >
-                {l.trans({ en: "Read Quick Start", ko: "빠른 시작 읽기" })}
-              </Link>
-              <Link className={jellyButtonRecipe({ variant: "default", size: "lg" })} href="/task">
-                {l.trans({ en: "Open the Sample", ko: "샘플 열어 보기" })}
-              </Link>
-            </div>
+            <Link className={jellyButtonRecipe({ size: "lg" }, "mt-10")} href="/plans">
+              Start my subscription
+            </Link>
           </div>
         </section>
 

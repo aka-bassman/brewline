@@ -1,5 +1,5 @@
 import { type cnst, usePage } from "@apps/brewline/client";
-import { type ModelProps, cn } from "akanjs/client";
+import { cn, type ModelProps } from "akanjs/client";
 import { badgeRecipe, Layout } from "akanjs/ui";
 
 // ===== Task.Unit.tsx =====
