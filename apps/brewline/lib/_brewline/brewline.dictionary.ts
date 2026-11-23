@@ -1,4 +1,3 @@
-
 import { serviceDictionary } from "akanjs/dictionary";
 
 import type { BrewlineEndpoint } from "./brewline.signal";
