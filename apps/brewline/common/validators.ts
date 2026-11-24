@@ -9,10 +9,6 @@ export function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
-export function isValidTaskTitle(title: string): boolean {
-  return title.trim().length > 0;
-}
-
 // ---- Expandable additional fields: ----
 // URL validation
 // export function isValidUrl(url: string) { try { new URL(url); return true; } catch { return false; } }
